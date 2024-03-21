@@ -64,7 +64,11 @@ return function (RouteBuilder $routes): void {
          */
         $builder->connect('/pages/*', 'Pages::display');
 
+        // RESTful routes for Articles
+        $builder->setExtensions(['json']);
+        $builder->connect('/articles/like/:id', ['controller' => 'Articles', 'action' => 'like'], ['pass' => ['id'], '_method' => 'POST']);
         $builder->resources('Articles');
+
 
         /*
          * Connect catchall routes for all controllers.

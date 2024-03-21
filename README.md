@@ -40,12 +40,33 @@ The application should now be accessible at http://localhost:34251
 
 ### Authentication
 
-TODO: pls summarize how to check "Authentication" bahavior
+- Access the login interface at http://localhost:34251/user/login.
+- If you do not have an account, click on "Add User" to create a new account.
+- To logout, visit the URL http://localhost:34251/user/logout.
 
 ### Article Management
 
-TODO: pls summarize how to check "Article Management" bahavior
+- The features can be directly used at http://localhost:34251/articles. You may try accessing it both logged in and not logged in.
+- You can also use Postman for operations. To work with session-based authentication in Postman, follow these steps after logging in through the browser and obtaining the session cookie information:
+  - **Login via the browser** at `http://localhost:34251/user/login` and capture the session cookies information.
+  - **Configure Postman with the session cookie**:
+      - In Postman, navigate to the Headers section of your request. Refer to [Managing cookies in Postman](https://learning.postman.com/docs/sending-requests/cookies/) for detailed instructions.
+
+  - **Set up your request in Postman as required**, for example, to Create an Article (POST):
+      - Configure the URL to `http://localhost:34251/articles.json`
+      - Method: `POST`
+      - Body: Use the raw JSON format with the content:
+          ```json
+          {
+            "title": "Example Title",
+            "body": "This is the body of the article."
+          }
+          ```
+      - Headers: Configure the session cookie as instructed above.
+
+This approach allows you to simulate an authenticated session in Postman, enabling you to test and interact with your web application's server-side functionalities that require user authentication.
+
 
 ### Like Feature
 
-TODO: pls summarize how to check "Like Feature" bahavior
+- A Likes counter and a like button have been added at http://localhost:34251/articles. Try it out both when logged in and not logged in.
